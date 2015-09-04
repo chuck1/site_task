@@ -1,0 +1,174 @@
+{% extends 'task/base.html' %}
+
+{% block content %}
+<table>
+<form action="{% url 'task:form_task_add'%}" method="post">
+	{% csrf_token %}
+
+	<tr>
+		<th><label for="{{ form.title.id_for_label }}">
+				{{ form.title.label }}:</label></th>
+		<td>{{ form.title }}</td>
+		{% if form.title.errors %}
+		<td>{{ form.title.errors }}<td>
+		{% endif %}
+	</tr>
+
+	<tr>
+		<th><label for="{{ form.date_sp.id_for_label }}">
+				{{ form.date_sp.label }}:</label>
+		</th>
+		<td>{{ form.date_sp }}</td>
+		{% if form.date_sp.errors %}
+		<td>{{ form.date_sp.errors }}<td>
+		{% endif %}
+
+		<th><label for="{{ form.time_sp.id_for_label }}">
+				{{ form.time_sp.label }}:</label>
+		</th>
+		<td>{{ form.time_sp }}</td>
+		{% if form.time_sp.errors %}
+		<td>{{ form.time_sp.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr>
+		<th><label for="{{ form.date_ep.id_for_label }}">
+				{{ form.date_ep.label }}:</label></th>
+		<td>{{ form.date_ep }}</td>
+		{% if form.date_ep.errors %}
+		<td>{{ form.date_ep.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr>
+		<th><label for="{{ form.date_sa.id_for_label }}">
+				{{ form.date_sa.label }}:
+		</label></th>
+		<td>{{ form.date_sa }}</td>
+		{% if form.date_sa.errors %}
+		<td>{{ form.date_sa.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr>
+		<th><label for="{{ form.date_ea.id_for_label }}">
+				{{ form.date_ea.label }}:
+		</label></th>
+		<td>{{ form.date_ea }}</td>
+		{% if form.date_ea.errors %}
+		<td>{{ form.date_ea.errors }}<td>
+		{% endif %}
+	</tr>
+
+
+
+
+	<tr>
+		<th><label for="{{ form.repeat.id_for_label }}">
+				{{ form.repeat.label }}:</label></th>
+		<td>{{ form.repeat }}</td>
+		{% if form.repeat.errors %}
+		<td>{{ form.repeat.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr class="repeat">
+		<th><label for="{{ form.repeat_mon.id_for_label }}">
+				{{ form.repeat_mon.label }}:
+		</label></th>
+		<td>{{ form.repeat_mon }}</td>
+		{% if form.repeat_mon.errors %}
+			<td>{{ form.repeat_mon.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr class="repeat">
+		<th><label for="{{ form.repeat_tue.id_for_label }}">
+				{{ form.repeat_tue.label }}:
+		</label></th>
+		<td>{{ form.repeat_tue }}</td>
+		{% if form.repeat_tue.errors %}
+			<td>{{ form.repeat_tue.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr class="repeat">
+		<th><label for="{{ form.repeat_wed.id_for_label }}">
+				{{ form.repeat_wed.label }}:
+		</label></th>
+		<td>{{ form.repeat_wed }}</td>
+		{% if form.repeat_wed.errors %}
+			<td>{{ form.repeat_wed.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr class="repeat">
+		<th><label for="{{ form.repeat_thu.id_for_label }}">
+				{{ form.repeat_thu.label }}:
+		</label></th>
+		<td>{{ form.repeat_thu }}</td>
+		{% if form.repeat_thu.errors %}
+			<td>{{ form.repeat_thu.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr class="repeat">
+		<th><label for="{{ form.repeat_fri.id_for_label }}">
+				{{ form.repeat_fri.label }}:
+		</label></th>
+		<td>{{ form.repeat_fri }}</td>
+		{% if form.repeat_fri.errors %}
+			<td>{{ form.repeat_fri.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr class="repeat">
+		<th><label for="{{ form.repeat_sat.id_for_label }}">
+				{{ form.repeat_sat.label }}:
+		</label></th>
+		<td>{{ form.repeat_sat }}</td>
+		{% if form.repeat_sat.errors %}
+			<td>{{ form.repeat_sat.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr class="repeat">
+		<th><label for="{{ form.repeat_sun.id_for_label }}">
+				{{ form.repeat_sun.label }}:
+		</label></th>
+		<td>{{ form.repeat_sun }}</td>
+		{% if form.repeat_sun.errors %}
+			<td>{{ form.repeat_sun.errors }}<td>
+		{% endif %}
+	</tr>
+	<tr class="repeat">
+		<th><label for="{{ form.repeat_end_condition.id_for_label }}">
+				{{ form.repeat_end_condition.label }}:
+		</label></th>
+		<td>{{ form.repeat_end_condition }}</td>
+		{% if form.repeat_end_condition.errors %}
+			<td>{{ form.repeat_end_condition.errors }}<td>
+		{% endif %}
+	</tr>
+
+
+		
+	<tr><td><input type="submit" value="Submit" /></td></tr>
+</form>    
+</table>
+{% endblock %}
+
+{% block script_foot %}
+
+function check_repeat() {
+	//alert("repeat");
+	if ($("#id_repeat").is(":checked")) {
+		$(".repeat").css('display', 'table-row');
+	} else {
+		$(".repeat").css('display', 'none');
+	}
+}
+
+$("#id_repeat").change(function() {
+	//alert("change");
+	$(check_repeat);
+});
+
+$(check_repeat);
+
+
+{% endblock %}
+
+
+

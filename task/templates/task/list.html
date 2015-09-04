@@ -1,0 +1,74 @@
+{% extends 'task/base.html' %}
+
+{% block style %}
+table.list {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+table.list td {
+	border: 1px solid black;
+}
+table.list th {
+	border: 1px solid black;
+	min-width: 100px;
+}
+{% endblock %}
+
+{% block content %}
+<!--<div id="content-main">
+	<div class="module">-->
+		<table class="list">
+			<tr>
+				<th></th>
+				<th colspan="2">start planned</th>
+				<th colspan="2">start actual</th>
+				<th colspan="2">end planned</th>
+				<th colspan="2">end actual</th>
+				<th colspan="2">duration</th>
+			</tr>
+			<tr>
+				<th>Title</th>
+				<th>date</th>
+				<th>time</th>
+				<th>date</th>
+				<th>time</th>
+				<th>date</th>
+				<th>time</th>
+				<th>date</th>
+				<th>time</th>
+				<th>planned</th>
+				<th>actual</th>
+			</tr>
+			{% for task, sp, ep, sa, ea, dp, da in tasks %}
+			<tr>
+				<td>{{ task.title }}</td>
+				<td class="{{ sp.class }}">{{ sp.d }}</td>
+				<td class="{{ sp.class }}">{{ sp.t }}</td>
+				<td class="{{ sa.class }}">{{ sa.d }}</td>
+				<td class="{{ sa.class }}">{{ sa.t }}</td>
+				<td class="{{ ep.class }}">{{ ep.d }}</td>
+				<td class="{{ ep.class }}">{{ ep.t }}</td>
+				<td class="{{ ea.class }}">{{ ea.d }}</td>
+				<td class="{{ ea.class }}">{{ ea.t }}</td>
+				<td class="{{ dp.class }}">{{ dp.str }}</td>
+				<td class="{{ da.class }}">{{ da.str }}</td>
+
+				<td>
+				<form action="{% url 'task:start_now' task.id %}" method="post">
+					{% csrf_token %}
+					<input type="submit" value="START"/>
+				</form>
+				</td>
+				<td>
+					<form action="{% url 'task:end_now' task.id %}" method="post">
+						{% csrf_token %}
+						<input type="submit" value="END"/>
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+<!--	</div>
+</div>-->
+{% endblock %}
+
