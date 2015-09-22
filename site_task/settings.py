@@ -81,6 +81,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+STATIC_ROOT = '/home/chuck/home/var/www/source/static/site_task/'
+
 STATIC_URL = '/static/site_task/'
 
 import warnings

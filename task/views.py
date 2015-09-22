@@ -237,8 +237,12 @@ def end_now(request, task_id):
     
     t = get_object_or_404(task.models.Task, pk=task_id)
     
-    t.date_ea = django.utils.timezone.now()
-    
+    #t.date_ea = django.utils.timezone.now()
+    n = django.utils.timezone.now()
+
+    t.set_date(n.date(), task.models.TaskOperation.OP_SET_END_ACTU)
+    t.set_time(n.time(), task.models.TaskOperation.OP_SET_END_ACTU)
+
     if t.time_sp:
         t.time_ea = django.utils.timezone.now()
 
